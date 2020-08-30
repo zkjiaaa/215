@@ -1,0 +1,32 @@
+<scroll-view scroll-y='true' class='service'>
+  <view class="box">
+    <view class="tit">贰壹伍</view>
+    <view class="tit_s">
+      一.前言
+    </view>
+    <view class="cont">
+      <p>非常感谢您能使用“贰壹伍”小程序，有任何问题使用上的问题或者建议可以及时和我们团队联系哦！</p>
+    </view>
+
+    <view class="tit_s">
+      二.创建初心
+    </view>
+    <view class="cont">
+      <p>深圳这座城市节奏特别的快，有很多好玩的想法常常因为没有同伴而放弃。我相信很多人有一样的痛苦，所以打造一款高效快捷、无负担的线下交友小程序。生活本无趣，还好我们有趣~</p>
+    </view>
+
+    <view class="tit_s">
+      三.关于团队
+    </view>
+    <view class="cont">
+      <p>我们是一群90后，每个人都有自己的工作，这个项目都是大家忙里抽闲在运营，所以会有很多不足的地方。希望大家谅解~我们会尽量做的更好的</p>
+    </view>
+
+    <view class="tit_s">
+      四.最后
+    </view>
+    <view class="cont">
+      <p>如果你也爱玩、有责任心、有时间、像陪伴我们一起成长的话，可以关注“贰壹伍”公众号后台回复：“运营报名”</p>
+    </view>
+  </view>
+</scroll-view>
