@@ -105,7 +105,7 @@
                 <span>我的发起</span>
             </view> -->
             <view wx:if="{{my_ispost}}" class="itemself" bindtap="click_post" data-index="1">
-                <image src="static/images/tar-about-on.png" class="itemself_ico"></image>
+                <image src="/static/images/icon/status.png" class="itemself_ico"></image>
                 <span>发起项目</span>
             </view>
             <view class="itemself" bindtap="click_myJoin" data-index="2">

@@ -23,7 +23,7 @@ App({
       var value = wx.getStorageSync('user_openid')
       if (value) {
       } else {
-        console.log('执行login1')
+        //执行登录
         wx.login({
           success: function (res) {
             if (res.code) {
@@ -38,6 +38,7 @@ App({
                 success: function (userData) {
                   wx.getUserInfo({
                     success: function (result) {
+                      console.log(result);
                       var userInfo = result.userInfo
                       var nickName = userInfo.nickName
                       var avatarUrl = userInfo.avatarUrl
@@ -51,6 +52,8 @@ App({
                             wx.setStorageSync('my_username', user.get("username"))
                             wx.setStorageSync('my_sex', user.get("sex"))
                             wx.setStorageSync('my_avatar', user.get("userPic"))
+                            wx.setStorageSync('my_ispost', user.get("isPost"))
+                            console.log(user);
                           } catch (e) {
                           }
                           console.log("登录成功");
@@ -75,6 +78,8 @@ App({
                                   wx.setStorageSync('my_username', user.get("username"))
                                   wx.setStorageSync('my_sex', user.get("sex"))
                                   wx.setStorageSync('my_avatar', user.get("userPic"))
+                                  wx.setStorageSync('my_ispost', user.get("isPost"))
+                                  console.log(user.get("isPost"));
                                 } catch (e) {
                                 }
                               },

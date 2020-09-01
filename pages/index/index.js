@@ -13,13 +13,12 @@ const FAST_SPEED_EFF_Y = 50;
 var my_nick = wx.getStorageSync('my_nick')
 var my_sex = wx.getStorageSync('my_sex')
 var my_avatar = wx.getStorageSync('my_avatar')
-var my_ispost = wx.getStorageSync('my_ispost')
 Page({
     data: {
         my_nick: my_nick,
         my_sex: my_sex,
         my_avatar: my_avatar,
-        my_ispost: my_ispost,
+        my_ispost: false,
         userInfo: [],
         dialog: false,
         autoplay: false,
@@ -77,6 +76,7 @@ Page({
         var self = this;
         this.getAll();
         this.fetchTopThreePosts(); //获取轮播图的3篇文章
+        this.getUserPostAuth();
         try {
             let res = wx.getSystemInfoSync()
             this.windowWidth = res.windowWidth;
@@ -91,14 +91,14 @@ Page({
         this.getAll();
         this.fetchTopThreePosts(); //获取轮播图的3篇文章
         //this.onLoad();
-        console.log('加载头像')
         var that = this
-
         app.getUserInfo(function(userInfo) {
             that.setData({
                 userInfo: userInfo
             })
         })
+        var user_id = wx.getStorageSync('user_id')
+        console.log(user_id);
         wx.getSystemInfo({
             success: (res) => {
                 this.setData({
@@ -151,8 +151,27 @@ Page({
         });
     },
 
-
-
+    //获取用户发起活动的权限
+    getUserPostAuth: function()
+    {
+      var that = this;
+      var Diary = Bmob.Object.extend("UserAuth");
+      var query = new Bmob.Query(Diary);
+      var user_id = wx.getStorageSync('user_id');
+      query.equalTo("userId", user_id); //只统计公开显示的活动
+      query.find({
+          success: function(results) {
+            if (results) {
+              var my_ispost = results[0].get("isPost");
+              that.setData({
+                my_ispost: my_ispost
+            })
+            }
+          },error: function(error) {
+            console.log(error)
+          }
+      });
+    },
 
     //获取轮播图的文章,点赞数最多的前3个
     fetchTopThreePosts: function() {
