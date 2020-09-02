@@ -14,7 +14,7 @@ var likerlist;
 let commentText; //评论输入框内容
 Page({
   data: {
-    accounts: ["微信号", "QQ号", "手机号"],
+    accounts: ["微信号", "手机号"],
     accountIndex: 0,
     actStatusArray:["准备中","进行中","已结束"],
     statusIndex:0,
@@ -1367,6 +1367,15 @@ Page({
       wx.getStorage({
         key: 'user_openid',
         success: function (res) {
+          //首先向用户询问是否可以发送模板
+          wx.requestSubscribeMessage({
+            tmplIds: ['Nr30VbL9dm738ALC5-nu_kcHC-IZ0j7yjbAUKRmRCRA'],
+            success (res) {
+              console.log(res);
+             }
+          })
+
+
           var openid = res.data;
           //获取点击按钮的formId
           var formId = event.detail.formId;
@@ -1377,12 +1386,12 @@ Page({
           var adminname = that.data.adminname;
           var adcontactWay = that.data.adcontactWay;
           var adcontactValue = that.data.adcontactValue;
-          var adcontact = adcontactWay + " : " + adcontactValue;
+          var adcontact = "您已成功加入发起,请及时与发起人联系,您的信息请确保正确：" + adcontactWay + " : " + adcontactValue;
           console.log("actid=" + optionId + ",pubid" + publisherId + ",title" + that.data.listTitle + ",adminname=" + that.data.adminname + ",address" + that.data.address + ",adcontactWay=" + that.data.adcontactWay + ",adcontactValue=" + that.data.adcontactValue);
           //发送模板消息
           var temp = {
             "touser": openid,//这里是填写发送对象的openid
-            "template_id": "NY0sFhJfxkA49EaRPhBYr17xiLqHKJ_XRAHMBQ52Y1c",//这里填写模板ID，可以在小程序后台配置
+            "template_id": "Nr30VbL9dm738ALC5-nu_kcHC-IZ0j7yjbAUKRmRCRA",//这里填写模板ID，可以在小程序后台配置
             //"page": "/pages/detail/detail?actid=" + actid + "&pubid=" + pubid,//点击后跳转的页面
             "page": "",
             "form_id": formId,//这里填写formid
@@ -1390,17 +1399,11 @@ Page({
               "keyword1": {
                 "value": title,
               },
-              "keyword2": {
-                "value": address
-              },
               "keyword3": {
-                "value": adminname
+                "value": address
               },
               "keyword4": {
                 "value": adcontact
-              },
-              "keyword5": {
-                "value": "您已成功加入发起,请及时与发起人联系"
               }
             },
             "emphasis_keyword": ""
