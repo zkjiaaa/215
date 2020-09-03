@@ -29,7 +29,7 @@
             </view>
             <view>
                 <text style="margin-right:12px;"></text>
-                <text style="margin-right:12px;">点赞量: {{agreeNum}}</text>
+                <!-- <text style="margin-right:12px;">点赞量: {{agreeNum}}</text> -->
                 <text>评论量: {{commNum}}</text>
             </view>
         </view>
@@ -53,7 +53,7 @@
 
         <!--活动时间item-->
         <view class="detail_input">
-            <text class="des_txt detail_txt">有效时间</text>
+            <text class="des_txt detail_txt">报名截至时间</text>
             <view class="detail_row_right">
                 <!--时间-->
                 <text>{{endtime}}</text>
