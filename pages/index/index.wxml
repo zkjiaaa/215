@@ -46,8 +46,8 @@
                         <text>{{item.pubtime}}</text>
                         <image src="/static/images/comments.png"></image>
                         <text class="">{{item.commentnum}}</text>
-                        <image src="/static/images/home-like.png"></image>
-                        <text class="">{{item.likenum}}</text>
+                        <!-- <image src="/static/images/home-like.png"></image>
+                        <text class="">{{item.likenum}}</text> -->
                     </view>
                 </view>
                 <view class="horizontal">
