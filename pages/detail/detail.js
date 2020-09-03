@@ -498,6 +498,7 @@ Page({
                                 "linkjoinHe": linkjoinHe,
                             }
                             joinlist.push(jsonA)
+                            console.log(jsonA);
                             that.setData({
                                 joinList: joinlist,
                                 loading: true
